@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+class RoundedRectangleTextFieldContainer extends StatefulWidget {
+
+  @override
+
+  _RoundedRectangleTextFieldContainerState createState() => _RoundedRectangleTextFieldContainerState();
+
+}
+
+class _RoundedRectangleTextFieldContainerState extends State<RoundedRectangleTextFieldContainer> {
+
+  double _height = 100;
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    return GestureDetector(
+
+      onScaleEnd: (ScaleEndDetails details) {
+
+        setState(() {
+
+          _height = details.velocity > 0 ? _height + 100 : _height - 100;
+
+        });
+
+      },
+
+      child: Container(
+
+        decoration: BoxDecoration(
+
+          borderRadius: BorderRadius.circular(20),
+
+        ),
+
+        height: _height,
+
+        width: double.infinity,
+
+        child: TextField(
+
+          decoration: InputDecoration(
+
+            border: InputBorder.none,
+
+            hintText: "Enter text here",
+
+          ),
+
+        ),
+
+      ),
+
+    );
+
+  }
+
+}
+
